@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday · Marvel Style</title>
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      background: #0b0f1a;
+      background-image: radial-gradient(circle at 20% 30%, #1e2a3a 0%, #0b0f1a 70%);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #f0f4fa;
+    }
+
+    /* ---------- HERO / HEADER ---------- */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 8vw, 4.8rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #f5d742 0%, #e03a3a 50%, #b31b1b 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 0 18px rgba(220, 50, 50, 0.6));
+      line-height: 1.1;
+    }
+
+    .hero h1 span {
+      display: block;
+      font-size: 0.45em;
+      letter-spacing: 8px;
+      color: #aab8c9;
+      background: none;
+      -webkit-text-fill-color: #aab8c9;
+      filter: none;
+      margin-top: 0.3rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #b0c0d0;
+      max-width: 640px;
+      margin: 0.8rem auto 0;
+      border-top: 1px solid rgba(255, 215, 0, 0.25);
+      padding-top: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    /* ---------- CARD GRID ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.8rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto 3rem;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #1a2332, #0f141f);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 215, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.2rem 0.8rem 1.2rem;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 215, 0, 0.15);
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 24px 36px -12px #b31b1b, 0 0 0 2px #f5d742;
+    }
+
+    .card img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #f5d742;
+      box-shadow: 0 0 16px rgba(245, 215, 66, 0.5);
+      background: #2a3a4a;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover img {
+      border-color: #e03a3a;
+      box-shadow: 0 0 24px #e03a3a;
+    }
+
+    .card .actor {
+      margin-top: 0.9rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #f5d742;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    .card .character {
+      font-size: 0.85rem;
+      color: #c0d0e0;
+      margin-top: 0.2rem;
+      font-style: italic;
+      letter-spacing: 0.3px;
+    }
+
+    /* ---------- BIRTHDAY MESSAGE ---------- */
+    .birthday-note {
+      background: linear-gradient(135deg, rgba(227, 58, 58, 0.15), rgba(245, 215, 66, 0.08));
+      border: 1px solid rgba(245, 215, 66, 0.4);
+      border-radius: 60px;
+      padding: 1rem 2.5rem;
+      margin-top: 1rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-align: center;
+      color: #f5d742;
+      letter-spacing: 1px;
+      box-shadow: 0 0 30px rgba(227, 58, 58, 0.2);
+      backdrop-filter: blur(8px);
+      max-width: 700px;
+    }
+
+    .birthday-note span {
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      margin-top: 3rem;
+      color: #4a5a6a;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .card img {
+        width: 80px;
+        height: 80px;
+      }
+      .card .actor {
+        font-size: 0.8rem;
+      }
+      .card .character {
+        font-size: 0.7rem;
+      }
+      .birthday-note {
+        font-size: 1rem;
+        padding: 0.8rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <h1>
+      Happy Birthday
+      <span>⚡ MARVEL EDITION ⚡</span>
+    </h1>
+    <p>Celebrate with the legends of the MCU — actors &amp; their iconic characters</p>
+  </header>
+
+  <!-- CARD GRID (filled by JavaScript) -->
+  <main class="grid" id="marvelGrid"></main>
+
+  <!-- BIRTHDAY MESSAGE -->
+  <div class="birthday-note">
+    <span>🎂</span> May your day be as epic as an Avengers assemble! <span>🎂</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    Ⓒ Marvel fans — images via Wikimedia Commons
+  </footer>
+
+  <script>
+    // ---------- DATA: Top Marvel actors & characters ----------
+    const marvelStars = [
+      {
+        actor: "Robert Downey Jr.",
+        character: "Iron Man / Tony Stark",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Robert_Downey_Jr._2014_Comic_Con_(cropped).jpg"
+      },
+      {
+        actor: "Chris Evans",
+        character: "Captain America / Steve Rogers",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Chris_Evans_in_2019.jpg"
+      },
+      {
+        actor: "Chris Hemsworth",
+        character: "Thor",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Chris_Hemsworth_by_Gage_Skidmore_2_(cropped).jpg"
+      },
+      {
+        actor: "Scarlett Johansson",
+        character: "Black Widow / Natasha Romanoff",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Scarlett_Johansson_by_Gage_Skidmore_2_(cropped).jpg"
+      },
+      {
+        actor: "Mark Ruffalo",
+        character: "Hulk / Bruce Banner",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Mark_Ruffalo_in_2017_by_Gage_Skidmore.jpg"
+      },
+      {
+        actor: "Tom Holland",
+        character: "Spider-Man / Peter Parker",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Tom_Holland_by_Gage_Skidmore.jpg"
+      },
+      {
+        actor: "Benedict Cumberbatch",
+        character: "Doctor Strange",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Benedict_Cumberbatch_2014_(cropped).jpg"
+      },
+      {
+        actor: "Chadwick Boseman",
+        character: "Black Panther / T'Challa",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Chadwick_Boseman_2016.jpg"
+      },
+      {
+        actor: "Elizabeth Olsen",
+        character: "Scarlet Witch / Wanda Maximoff",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Elizabeth_Olsen_by_Gage_Skidmore_2.jpg"
+      },
+      {
+        actor: "Tom Hiddleston",
+        character: "Loki",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Tom_Hiddleston_(2014).jpg"
+      },
+      {
+        actor: "Samuel L. Jackson",
+        character: "Nick Fury",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Samuel_L._Jackson_2019_(cropped).jpg"
+      },
+      {
+        actor: "Brie Larson",
+        character: "Captain Marvel / Carol Danvers",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Brie_Larson_2019_(cropped).jpg"
+      },
+      {
+        actor: "Paul Rudd",
+        character: "Ant-Man / Scott Lang",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Paul_Rudd_2018_(cropped).jpg"
+      },
+      {
+        actor: "Zoe Saldana",
+        character: "Gamora",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Zoe_Saldana_2019_(cropped).jpg"
+      },
+      {
+        actor: "Chris Pratt",
+        character: "Star-Lord / Peter Quill",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Chris_Pratt_2018_(cropped).jpg"
+      },
+      {
+        actor: "Josh Brolin",
+        character: "Thanos",
+        img: "https://en.wikipedia.org/wiki/Special:FilePath/Josh_Brolin_2016_(cropped).jpg"
+      }
+    ];
+
+    // ---------- RENDER CARDS ----------
+    const grid = document.getElementById('marvelGrid');
+
+    marvelStars.forEach(star => {
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      // Image with onerror fallback (simple initial avatar)
+      const img = document.createElement('img');
+      img.src = star.img;
+      img.alt = star.actor;
+      img.loading = 'lazy';
+      img.onerror = function () {
+        // Fallback: generate a simple SVG avatar with the actor's initial
+        const initial = star.actor.charAt(0);
+        this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110' viewBox='0 0 110 110'%3E%3Crect width='110' height='110' fill='%232a3a4a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23f5d742'%3E${initial}%3C/text%3E%3C/svg%3E`;
+      };
+
+      const actorEl = document.createElement('div');
+      actorEl.className = 'actor';
+      actorEl.textContent = star.actor;
+
+      const charEl = document.createElement('div');
+      charEl.className = 'character';
+      charEl.textContent = star.character;
+
+      card.appendChild(img);
+      card.appendChild(actorEl);
+      card.appendChild(charEl);
+      grid.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
